@@ -1,7 +1,8 @@
 
+import { Link } from "react-router-dom";
 import frame from "../../../assets/icons/Frame.jpg"
 const ServiceCard = ({ service }) => {
-    const { title, img, price} = service
+    const {_id, title, img, price} = service
     return (
         <div>
             <div className="card w-96 h-[370px] shadow-sm border mt-8">
@@ -13,7 +14,9 @@ const ServiceCard = ({ service }) => {
 
                     <div className="flex">
                         <p className="text-xl text-[#FF3811] font-semibold">Price : ${price}</p>
-                        <button><img src={frame} alt="" /></button>
+                        <Link to={`/book/${_id}`}>
+                            <button><img src={frame} alt="" /></button>
+                        </Link>
 
                     </div>
                 </div>

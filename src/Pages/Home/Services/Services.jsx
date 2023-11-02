@@ -6,10 +6,10 @@ const Services = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch("services.json")
+        fetch("http://localhost:5000/srevices")
             .then(response => response.json())
-        .then(data => setServices(data))
-    },[])
+            .then(data => setServices(data))
+    }, [])
     return (
         <div>
             <div className="text-center space-y-3">
