@@ -1,30 +1,54 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { data } from "autoprefixer";
+
+import Swal from 'sweetalert2'
 
 
 const BookService = () => {
 
     const service = useLoaderData()
-    const { title, _id, price } = service
+    const { title, _id, price, img } = service
     const { user } = useContext(AuthContext)
 
-    const handleBookService = event =>{
+    const handleBookService = event => {
         event.preventDefault();
 
         const form = event.target
         const name = form.name.value;
         const date = form.date;
         const email = user?.email;
-        const order = {
+        const booking = {
             customerName: name,
+            img,
             email: email,
             date: date,
-            srevices: _id,
-            price : price
+            img,
+            service: title,
+            service_id: _id,
+            price: price
         }
-        console.log(order)
+        console.log(booking)
+        fetch("http://localhost:5000/bookings", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
     return (
         <div>
@@ -46,7 +70,7 @@ const BookService = () => {
                         <label className="label">
                             {/* <span className="label-text">Password</span> */}
                         </label>
-                        <input type="date" name="data"   className="input input-bordered" />
+                        <input type="date" name="data"  className="input input-bordered" />
                     </div>
 
                     <div className="form-control">

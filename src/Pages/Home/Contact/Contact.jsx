@@ -6,7 +6,7 @@ import icon1 from "../../../assets/icons/icon1.png"
 const Contact = () => {
     return (
         <div className="bg-[#151515] w-full mt-8 rounded-lg">
-            <div className="p-20 flex justify-between">
+            <div className="p-20 lg:space-y-0 space-y-6 md:flex md:space-x-6   justify-between">
                 <div className="flex gap-4">
                     <div className="relative">
                         <FaCalendarAlt className="text-5xl text-white"></FaCalendarAlt>

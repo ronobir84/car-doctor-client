@@ -17,7 +17,7 @@ const Services = () => {
                 <h2 className="text-[45px] text-[#151515] font-bold">Our Service Area</h2>
                 <p className="text-base text-[#737373] font-normal">The Majority Have Suffered Alteration In Some Form, By Injected Humour, Or Randomised <br /> Words Which Don't Look Even Slightly Believable.</p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:ml-0 ml-3 md:ml-8 lg:grid-cols-3 md:grid-cols-2 gap-6">
                 {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
